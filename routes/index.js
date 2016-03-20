@@ -8,23 +8,10 @@ var router = express.Router();
 var Layout = require('../views/layout.jsx');
 
 router.get('/', function(req, res) {
-    
-     console.log('GET');
      
     var initialData = data.list;  
     
     res.setHeader('Content-Type', 'text/html');
-    /*res.end(React.renderToStaticMarkup(
-        React.DOM.body(null,
-            React.DOM.div({
-                id: 'container'
-                //dangerouslySetInnerHTML: {
-                //   __html: React.renderToString(React.createElement(Todos, {todos: initialData})) 
-                //}
-            }),
-            React.DOM.script({ src: '/index.js' })
-    )))*/
-    
     res.end(React.renderToStaticMarkup(React.createElement(Layout, { 
         scripts: ['/index.js'],
         styles: ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css']
@@ -32,12 +19,10 @@ router.get('/', function(req, res) {
 });
 
 router.post('/list', function(req, res) {
-    console.log('LIST');
     res.json(data.list); 
 });
 
 router.post('/new', function(req, res) {
-    console.log('NEW ' + req.body.text);
     if(req.body.text) {
         data.add(req.body.text, false);
     }
@@ -45,7 +30,6 @@ router.post('/new', function(req, res) {
 });
 
 router.post('/change', function(req, res) {
-    console.log('CHANGE ' + req.body.text);
     if(req.body.text) {
         var item = data.change(req.body.text, req.body.done);
         res.json(item);
@@ -55,7 +39,6 @@ router.post('/change', function(req, res) {
 });
 
 router.post('/delete', function(req, res) {
-    console.log('DELETE ' + req.body.text);
     data.delete(req.body.text);
     res.end();
 });

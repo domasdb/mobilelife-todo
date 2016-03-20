@@ -101,7 +101,6 @@ var Todo = React.createClass({
         };
     },
     handleChange: function () {
-        console.log('State changed');
         var t = this;
         
         request({
@@ -123,7 +122,6 @@ var Todo = React.createClass({
     },
     handleDelete: function() {
         var text = this.state.text;
-        console.log('DELETE ' + text);
         request({
             method: 'POST',
             uri: Url.resolve(window.location.href, '/delete'),
@@ -134,7 +132,6 @@ var Todo = React.createClass({
         },
         (function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                console.log('DELETED ' + text);
                 this.props.onDelete();
             }
         }).bind(this));

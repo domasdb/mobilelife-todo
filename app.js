@@ -3,15 +3,10 @@ var browserify = require('browserify');
 var routes = require('./routes/index');
 var bodyParser = require('body-parser')
 
-//var jsx = require('node-jsx');
-
 var app = express();
-//jsx.install();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
-//app.set('views', __dirname + '/views');
 
 app.use('/', routes); 
 app.use(express.static(__dirname + '/public'));
