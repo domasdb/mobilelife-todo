@@ -11,10 +11,8 @@ app.use(bodyParser.json());
 app.use('/', routes); 
 app.use(express.static(__dirname + '/public'));
 app.use('/index.js', function(req, res) {
-   console.log('BUNDLE START');
    res.setHeader('Content-Type', 'application/javascript');
    browserify('./public/js/index.js', { debug: true }).transform('reactify').bundle().pipe(res);
-   console.log('BUNDLE END');
 });
 
 var server = app.listen(8888, function() {
