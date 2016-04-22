@@ -73,7 +73,9 @@ var Todos = React.createClass({
             var onDelete = this.componentDidMount.bind(this);
             return (<Todo key={todo.text} text={todo.text} done={todo.done} onDelete={onDelete}></Todo>);
         }).bind(this));
-        
+
+        console.log('HAI');
+
         return (
             <div>
                 <h3>Todo</h3>
